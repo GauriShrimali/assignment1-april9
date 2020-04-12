@@ -1,0 +1,17 @@
+# ASSIGNMENT 1
+#PROBLEM :- CREATE A DIRECTORY STRUCTURE
+#CODE :-
+
+mkdir -p A/{B/{D/{I/M/Z , J/L/Z} , E/H/L/Z} , C/{F/H/L/Z , G/K/L/Z}}
+tree A
+
+# ASSIGNMENT 4
+#PROBLEM :- RUN CALCULATOR FOR 10S AND STORE THE RESULT IN /tmp/a.txt
+#CODE :-
+
+timeout 10s
+#run few cal commands
+cal -j
+cal 1 -j
+cal %Y
+history > /tmp/a.txt
