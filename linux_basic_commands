@@ -5,6 +5,49 @@
 mkdir -p A/{B/{D/{I/M/Z , J/L/Z} , E/H/L/Z} , C/{F/H/L/Z , G/K/L/Z}}
 tree A
 
+#ASSIGNMENT 2
+#PROBLEM :- PERMISSION FOR DATE COMMAND
+#CODE :-
+
+date
+which date
+chmod a-x /usr/bin/date
+ls -l /usr/bin/date
+useradd -s /usr/bin/date guest
+setfacl -m u:guest:rwx /usr/bin/date
+su - guest
+setfacl -m u:root:--- /usr/bin/date
+chmod -x /usr/bin/date 
+date
+
+#ASSIGNMENT 3
+#PROBLEM :- CREATE TWO USERS AND TRANSFER A FILE FROM ONE USER TO ANOTHER
+#CODE :-
+
+sudo apt install openssh-server -y
+sudo ufw allow ssh
+sudo useradd -m GUEST1
+sudo useradd -m GUEST2
+sudo passwd GUEST1
+sudo passwd GUEST2
+
+#INSIDE GUEST1
+su - GUEST1
+mkdir sender && cd sender && touch test1.txt
+exit
+
+#INSIDE GUEST2
+su - GUEST2
+mkdir receiver && cd receiver && touch test2.txt
+exit
+
+#INSIDE GUEST1
+su - GUEST1
+scp sender GUEST2@localhost:/home/GUEST2/
+scp -r sender GUEST2@localhost:/home/GUEST2/
+exit
+ls /home/GUEST2/
+
 # ASSIGNMENT 4
 #PROBLEM :- RUN CALCULATOR FOR 10S AND STORE THE RESULT IN /tmp/a.txt
 #CODE :-
@@ -15,3 +58,4 @@ cal -j
 cal 1 -j
 cal %Y
 history > /tmp/a.txt
+touch /tmp/a.txt
